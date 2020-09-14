@@ -15,6 +15,8 @@ using namespace std;
 This program reads all raw files and averages its values by a bootstrap procedure;
 
 NECESSARY CHANGES:
+nr of files
+nr of samples
 nr of columns
 nr of independent columns
 file names template
@@ -73,7 +75,7 @@ int main(){
 	return 0;
 } 
 
-//This function counts the number of lines of the first document/configuration (vertex1.dat)
+//counts the number of lines of the first document/configuration (vertex1.dat)
 int getfilesize(){
 	
 	//string firstfilename = "raw_datadiag/gluon_b6.0_80.4-landau-2.dat";
@@ -100,8 +102,8 @@ int getfilesize(){
 }
 
 
-//This function opens each file and adds each column to each entry of the vector v_average, averaging it (except the independent variables)
-//it also saves all the information from the files to v_foçescontent
+//opens each file and adds each column to each entry of the vector v_average, averaging it (except the independent variables)
+//saves all the information from the files to v_filesscontent
 void getfilescontent(vector<vector<vector<double> > > &v_filescontent, vector<vector<double> > &v_average, const int Nconfig, const int Ncolumns, const int Nindependent){
 
 	//string filename_base = "raw_datadiag/gluon_b6.0_80.4-landau-"; 					//change directory if needed
@@ -144,7 +146,7 @@ void getfilescontent(vector<vector<vector<double> > > &v_filescontent, vector<ve
 	}
 }
 
-//This function adds a third number to each interior vector of v_average with the standard error
+//adds a third number to each interior vector of v_average with the standard error
 //calculated using the bootstrap method
 void bootstrap(vector<vector<vector<double> > > &v_filescontent, vector<vector<double> > &v_errors, const int Nconfig, const int Nsamples, const int line_number, const int Ncolumns, const int Nindependent){
 
@@ -202,22 +204,3 @@ void bootstrap(vector<vector<vector<double> > > &v_filescontent, vector<vector<d
 }
 
 
-
-
-
-
-//Helpful stuff
-/*
-Define a type:
-> typedef std::vector<int> int_vec_t;
-> int_vec_t v;
-EXAMPLE - DEFINE A 2 DIMENSIONAL (VECTOR OF VECTORS)
-> int size = 10;
-> vector<vector<int> > vetorcrl(size,vector<int>(2));
-> vetorcrl[i][0] = i;
-CAN ALSO USE TYPEDEF:
-> typedef vector<int> V_int;
-> V_int v(5);
-> vector<V_int> vx(4, v);
-THIS CREATES A VECTOR vx OF 4 VECTORS V EACH WITH 5 ELEMENTS
-*/
