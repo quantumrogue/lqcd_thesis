@@ -1,10 +1,3 @@
-/*
-This program reads all files provenient from the vertex calculating program 
-and averages its values;
-It is important that the input files have the name form:
-'vertex1.dat'
-The error is calculated using a bootstrap method
-*/
 #include <iostream> //allows to write files
 #include <fstream> //allows to read files
 #include <vector> //Using vectors instead of normal arrays - range is not know a priori
@@ -18,6 +11,14 @@ The error is calculated using a bootstrap method
 #include <iomanip>
 using namespace std;
 
+/*
+This program reads all raw files and averages its values by a bootstrap procedure;
+
+NECESSARY CHANGES:
+nr of columns
+nr of independent columns
+file names template
+*/
 
 
 void srand(unsigned int seed);
